@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "reddit clone",
   "main": "index.js",
-
   "scripts": {
     "start": "NODE_ENV=production node src/index.js",
     "dev": "NODE_ENV=development nodemon src/index.js",
@@ -19,7 +18,7 @@
     "url": "https://github.com/GSG-G11/mo7amed-reddit/issues"
   },
   "homepage": "https://github.com/GSG-G11/mo7amed-reddit#readme",
-    "dependencies": {
+  "dependencies": {
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
@@ -31,6 +30,7 @@
   },
   "devDependencies": {
     "eslint": "^8.11.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "jest": "^27.5.1",
