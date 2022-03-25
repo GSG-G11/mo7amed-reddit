@@ -1,6 +1,6 @@
 const connection = require('../../config');
 
-const checkEmailsQuery = (email) => {
+const checkEmailQuery = (email) => {
   connection
     .query({
       text: 'SELECT * FROM users WHERE email= $1 Returning *',
@@ -13,4 +13,4 @@ const checkEmailsQuery = (email) => {
     });
 };
 
-module.exports = checkEmailsQuery;
+module.exports = checkEmailQuery;
