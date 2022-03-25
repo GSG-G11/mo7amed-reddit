@@ -6,17 +6,17 @@ CREATE TABLE users (
     name VARCHAR(255) NOT NULL,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) NOT NULL,
-    image VARCHAR(255) NOT NULL,
+    image TEXT ,
     password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    description TEXT ,
+    description TEXT NOT NULL,
+    image TEXT,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL,
-    image VARCHAR(255) NOT NULL
+    created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 
 CREATE TABLE votes (
@@ -33,7 +33,7 @@ CREATE TABLE comments (
     comment TEXT NOT NULL,
      user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL DEFAULT now()
 
 );    
 
