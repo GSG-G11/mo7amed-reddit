@@ -6,12 +6,12 @@ const {
 } = require('../../db/queris');
 
 const { SECRET_KEY } = process.env;
-const { signupValidation } = require('../../validation');
+const signupValidation = require('../../validation');
 const customizeError = require('../../error/customizeError');
 const { hashPassword } = require('./hashing');
 require('env2')('.env');
 
-const addUser = (req, res) => {
+const signup = (req, res) => {
   const { username, email, password } = req.body;
 
   signupValidation(req.body)
@@ -52,4 +52,4 @@ const addUser = (req, res) => {
       }
     });
 };
-module.exports = addUser;
+module.exports = signup;
