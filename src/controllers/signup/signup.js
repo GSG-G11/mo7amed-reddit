@@ -1,4 +1,4 @@
-const { jwt } = require('jsonwebtoken');
+const { sign } = require('jsonwebtoken');
 const {
   checkEmailQuery,
   addUserQuery,
@@ -12,22 +12,25 @@ const { hashPassword } = require('./hashing');
 require('env2')('.env');
 
 const signup = (req, res) => {
-  const { username, email, password } = req.body;
-
+  const {
+    username,
+    email,
+    image,
+    password,
+  } = req.body;
   signupValidation(req.body)
     .then(() => checkEmailQuery(email))
     .then(() => checkUsernameQuery(username))
-    // check the user name ....
     .then(() => hashPassword(password))
-    .then((hashedPassword) => addUserQuery(username, email, hashedPassword))
+    .then((hashedPassword) => addUserQuery(username, email, image, hashedPassword))
     .then((data) => {
       const { id } = data.rows[0];
-      jwt.sign({ id, username, email }, SECRET_KEY, (err, token) => {
+      sign({ id, username, email }, SECRET_KEY, (err, token) => {
         if (err) {
           throw customizeError(500, 'ERROR');
         } else {
           res
-            .cookie('mo7amed_token', token, { httpOnly: true, secure: true })
+            .cookie('access_token', token, { httpOnly: true, secure: true })
             .status(201)
             .json({ msg: 'you rigisted successfully' });
         }

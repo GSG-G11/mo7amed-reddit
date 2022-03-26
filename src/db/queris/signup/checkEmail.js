@@ -1,14 +1,15 @@
+const customizeError = require('../../../error/customizeError');
 const connection = require('../../config');
 
 const checkEmailQuery = (email) => {
   connection
     .query({
-      text: 'SELECT * FROM users WHERE email= $1 Returning *',
+      text: 'SELECT * FROM users WHERE email= $1',
       values: [email],
     })
     .then(({ rowCount }) => {
       if (rowCount !== 0) {
-        throw new Error('THIS EMAIL IS TAKEN TRY ANOTHER ONE');
+        throw customizeError(403, 'THIS EMAIL IS TAKEN TRY ANOTHER ONE');
       }
     });
 };
