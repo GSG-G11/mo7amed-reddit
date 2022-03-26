@@ -2,7 +2,7 @@ const express = require('express');
 const compression = require('compression');
 const cookieParse = require('cookie-parser');
 const { join } = require('path');
-const { router } = require('../route');
+const router = require('../route');
 
 module.exports = (app) => {
   app.use(express.json());

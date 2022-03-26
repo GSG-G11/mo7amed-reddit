@@ -1,42 +1,44 @@
-BEGIN;
-DROP TABLE IF EXISTS users, posts, votes, comments CASCADE;
 
-CREATE TABLE users (
+BEGIN;
+
+DROP TABLE IF EXISTS users, posts, comments, votes CASCADE;
+
+CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    image TEXT ,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    image text,
     password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE posts (
+CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    image TEXT,
+    description text NOT NULL,
+    image text,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL DEFAULT now()
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE votes (
+CREATE TABLE votes(
     post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     vote BOOLEAN NOT NULL,
     PRIMARY KEY(post_id, user_id)
 );
 
-CREATE TABLE comments (
+CREATE TABLE comments(
     id SERIAL PRIMARY KEY,
-    user_id INT,
-    post_id INT,
-    comment TEXT NOT NULL,
-     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    comment text NOT NULL,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL DEFAULT now()
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-);    
+INSERT INTO users (username, email, image, password) values
+('mo7amed', 'mo7amed@gmail.com', 'image_url', '123456789');
 
-
+INSERT INTO posts (title, description, image, user_id) values 
+('first post ', 'hello g11 members', 'image_url',1);
 
 COMMIT;
