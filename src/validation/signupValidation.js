@@ -7,6 +7,6 @@ const signupSchema = Joi.object({
   password: Joi.string().alphanum().min(8).required(),
 });
 
-const signupValidation = (dataObj) => signupSchema.validateAsync(dataObj);
+const signupValidation = (dataObj) => signupSchema.validateAsync(dataObj, { abortEarly: false });
 
 module.exports = signupValidation;

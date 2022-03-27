@@ -1,3 +1,5 @@
+const checkEmailLogin = require('./login/checkEmailLogin');
+
 const {
   addUserQuery,
   checkEmailQuery,
@@ -8,4 +10,5 @@ module.exports = {
   addUserQuery,
   checkEmailQuery,
   checkUsernameQuery,
+  checkEmailLogin,
 };
