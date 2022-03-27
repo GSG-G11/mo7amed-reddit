@@ -3,12 +3,14 @@ const {
   checkEmailQuery,
   addUserQuery,
   checkUsernameQuery,
+  // checkUsernameQuery,
 } = require('../../db/queris');
 
 const { SECRET_KEY } = process.env;
 const { signupValidation } = require('../../validation');
 const customizeError = require('../../error/customizeError');
 const { hashPassword } = require('./hashing');
+const { promise } = require('bcrypt/promises');
 require('env2')('.env');
 
 const signup = (req, res) => {
@@ -18,8 +20,8 @@ const signup = (req, res) => {
     image,
     password,
   } = req.body;
-  signupValidation(req.body)
-    .then(() => Promise.all([checkEmailQuery({ email }), checkUsernameQuery({ username })]))
+  signupValidation(req.body, { abortEarly: false })
+    .then(() => Promise.all([checkEmailQuery(email) , checkUsernameQuery(username)]))
     .then(() => hashPassword(password))
     .then((hashedPassword) => addUserQuery(username, email, image, hashedPassword))
     .then((data) => {
@@ -39,7 +41,6 @@ const signup = (req, res) => {
       if (error.message === 'THIS EMAIL IS TAKEN TRY ANOTHER ONE') {
         return res.status(403).json({
           status: 400,
-          oldInput: req.body,
           message: 'Email already was used',
           filedInputError: 'email',
         });
@@ -47,7 +48,6 @@ const signup = (req, res) => {
       if (error.message === 'THIS USERNAME IS TAKEN TRY ANOTHER ONE') {
         return res.status(403).json({
           status: 400,
-          oldInput: req.body,
           message: 'USERNAME already was used',
           filedInputError: 'username',
         });
