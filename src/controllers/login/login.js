@@ -31,7 +31,7 @@ const login = (req, res) => {
           },
           SECRET_KEY,
           (err, token) => {
-            res.cookie('access_token', token, { httpOnly: true, secure: true, maxAge: 1000 * 60 * 60 * 24 * 2 }).json({ msg: ' Log in successfully' });
+            res.cookie('accessToken', token, { httpOnly: true, secure: true, maxAge: 1000 * 60 * 60 * 24 * 2 }).json({ msg: ' Log in successfully' });
           },
         );
       } else if (!isMatched) {
