@@ -1,4 +1,4 @@
-const connection = require('../../config');
+const connection = require('../../config');c
 
 const addUserQuery = (username, email, image, password) => connection.query({
   text: 'INSERT INTO users (username, email,image, password) values ($1, $2, $3, $4) Returning *',
