@@ -1,12 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>reddit</title>
 </head>
+
 <body>
-    
+  <!-- header -->
+  <header>
+    <div id="logo-img">
+      <a href="/home"><img src="./assets/download.png" alt="home icon" /></a>
+    </div>
+    <div id="title">
+      <h2><span>m</span>ohamed <span>reddit</span></h2>
+    </div>
+    <div id="search-container">
+      <div class="search-holder">
+        <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+        <input type="text" id="search-input" placeholder="search reddit" />
+      </div>
+      <div class="add-post-info">
+        <div id="add-post-btn">
+          <button id="add-post-button"> add post</button>
+        </div>
+        <div class="user-header">
+          <img src="./assets/user.jpg" alt="">
+          <h5>mo7amed ehab</h5>
+        </div>
+      </div>
+    </div>
+    <div id="btns-container">
+      <button id="login-btn">log in</button>
+      <button id="signup-btn">sign up</button>
+    </div>
+  </header>
+
+
+  <article id="container-trends">
+    <h4>Trending today </h4>
+    <div>
+      <span></span>
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+    <div>
+      <span></span>
+
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+    <div>
+      <span></span>
+
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+    <div>
+      <span></span>
+
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+  </article>
+
+  <!-- posts section -->
+  <section>
+    <h4>popular post</h4>
+
+    <div class="container">
+      <div id="posts-container">
+        <div id="votes">
+          <i class="fa-solid fa-chevron-up"></i>
+          <h5>5</h5>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div id="post">
+
+          <div id="content">
+            <div class="user-info">
+              <img src="./assets/user.jpg" alt="">
+              <h5>mo7amed ehab</h5>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae animi, labore sequi sunt, maiores
+              tempore provident repudiandae eius iste error eos ad atque? Qui earum, culpa a Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. Nemo nam natus eum nostrum ex possimus recusandae eius temporibus
+              perferendis sed delectus, mollitia ullam ab reiciendis cumque eveniet nulla aliquam sapiente. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Fugiat nam est consequatur cum, magni fuga deleniti vel,
+              reprehenderit quod laboriosam architecto veniam inventore illo dolore eum corrupti quae facere. Enim?</p>
+            <img src="./assets/barca.jpg" alt="">
+          </div>
+          <div id="comments">
+            <i class="fa-regular fa-comment"></i>
+            <span>9</span>
+            <span>comments</span>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- login form -->
+  <div class="login-form">
+    <div class="form-container">
+      <div class="header">
+        <h2>Log In</h2>
+        <i class="fa-solid fa-xmark" id="cancel-icon"></i>
+      </div>
+      <div id="form" class="form">
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="email" placeholder="email" id="login-email" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="password">password</label>
+          <input type="password" placeholder="password" id="login-password" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <button id="login-submit">Submit</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- signup form -->
+  <div class="signup-form">
+    <div class="signup-container">
+      <div class="header">
+        <h2>Create Account</h2>
+        <i class="fa-solid fa-xmark" id="signup-cancel"></i>
+      </div>
+      <form id="form" class="form">
+        <div class="form-control">
+          <label for="signup-username">Username</label>
+          <input type="text" placeholder="username" id="signup-username" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="signup-email">Email</label>
+          <input type="email" placeholder="email" id="signup-email" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="signup-password">Password</label>
+          <input type="password" placeholder="Password" id="signup-password" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="signup-link">image link</label>
+          <input type="text" placeholder="image link" id="signup-link" />
+        </div>
+        <button id="signup-submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- add post form -->
+
+  <div class="add-post-form">
+    <div class="add-post-container">
+      <div class="header">
+        <h2>add post</h2>
+        <i class="fa-solid fa-xmark" id="add-post-cancel"></i>
+      </div>
+      <div id="form" class="form">
+        <div class="form-control">
+          <label for="description">description</label>
+          <textarea type="textarea" placeholder="description" id="description"></textarea> <i
+            class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="link">image link</label>
+          <input type="text" placeholder="image link" id="link" />
+        </div>
+        <button id="submit-post">Submit</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="./js/script.js"></script>
 </body>
+
 </html>

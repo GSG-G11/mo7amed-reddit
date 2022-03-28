@@ -31,7 +31,7 @@ const signup = (req, res) => {
           throw customizeError(500, 'SERVER ERROR');
         } else {
           res
-            .cookie('access_token', token, { httpOnly: true, secure: true })
+            .cookie('accessToken', token, { httpOnly: true, secure: true })
             .status(201)
             .json({ msg: 'you rigisted successfully' });
         }
