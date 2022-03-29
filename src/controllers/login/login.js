@@ -43,6 +43,10 @@ const login = (req, res) => {
         res.status(400).json({ msg: 'incorrect password' });
       } else if (err.message === 'Please! Create Account First!') {
         res.status(400).json({ msg: 'Please! Create Account First!' });
+      } else if (err.details) {
+        res.status(422).json({ msg: err.details });
+      } else {
+        res.status(500).json({ msg: 'Internal server error' });
       }
     });
 };

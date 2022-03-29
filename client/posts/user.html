@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./user.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>post</title>
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <div id="logo-img">
+      <a href="/home"><img src="./assets/download.png" alt="home icon" /></a>
+    </div>
+    <div id="title">
+      <h2><span>m</span>ohamed <span>reddit</span></h2>
+    </div>
+    <div id="search-container">
+      <div class="search-holder">
+        <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+        <input type="text" id="search-input" placeholder="search reddit" />
+      </div>
+      <div class="add-post-info">
+        <div id="add-post-btn">
+          <button id="add-post-button"> add post</button>
+        </div>
+        <div class="user-header">
+          <img src="./assets/user.jpg" alt="">
+          <h5>mo7amed ehab</h5>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <article id="container-trends">
+    <h4>Trending today </h4>
+    <div>
+      <span></span>
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+    <div>
+      <span></span>
+
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+    <div>
+      <span></span>
+
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+    <div>
+      <span></span>
+
+      <img src="./assets/barca.jpg" alt="" />
+      <h3>offical squad</h3>
+      <p>offical squad for barcelona team in matchday</p>
+    </div>
+  </article>
+
+  <!-- posts section -->
+  <section>
+    <h4>popular post</h4>
+
+    <div class="container">
+      <div id="posts-container">
+        <div id="votes">
+          <i class="fa-solid fa-chevron-up"></i>
+          <h5>5</h5>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div id="post">
+
+          <div id="content">
+            <div class="user-info">
+              <img src="./assets/user.jpg" alt="">
+              <h5>mo7amed ehab</h5>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae animi, labore sequi sunt, maiores
+              tempore provident repudiandae eius iste error eos ad atque? Qui earum, culpa a Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. Nemo nam natus eum nostrum ex possimus recusandae eius temporibus
+              perferendis sed delectus, mollitia ullam ab reiciendis cumque eveniet nulla aliquam sapiente. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Fugiat nam est consequatur cum, magni fuga deleniti vel,
+              reprehenderit quod laboriosam architecto veniam inventore illo dolore eum corrupti quae facere. Enim?</p>
+            <img src="./assets/barca.jpg" alt="">
+          </div>
+          <div id="comments">
+            <i class="fa-regular fa-comment"></i>
+            <span>9</span>
+            <span>comments</span>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- add post form -->
+
+  <div class="add-post-form">
+    <div class="add-post-container">
+      <div class="header">
+        <h2>add post</h2>
+        <i class="fa-solid fa-xmark" id="add-post-cancel"></i>
+      </div>
+      <div id="form" class="form">
+        <div class="form-control">
+          <label for="add-title">title</label>
+          <input type="input" placeholder="title" id="add-title">
+           <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="add-description">description</label>
+          <textarea type="textarea" placeholder="description" id="add-description"></textarea> <i
+            class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="link">image link</label>
+          <input type="text" placeholder="image link" id="link" />
+        </div>
+        <button id="submit-post">Submit</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="./user.js"></script>
+</body>
+
+</html>
