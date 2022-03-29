@@ -161,7 +161,6 @@ const login = () => {
   return fetch('/signup', request)
     .then((result) => result.json())
     .then((res) => {
-      console.log(res);
       if (res.status === 400) {
         swal('Warning !', res.msg, 'warning');
       } else if (res.status === 500) {
