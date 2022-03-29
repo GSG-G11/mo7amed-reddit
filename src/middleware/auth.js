@@ -1,10 +1,11 @@
+require('env2')('.env');
 const { verify } = require('jsonwebtoken');
 
 const isAuth = (req, res, next) => {
   const { accessToken } = req.cookies;
 
   if (accessToken) {
-    verify(accessToken, process.env.SECRET, (err, user) => {
+    verify(accessToken, process.env.SECRET_KEY, (err, user) => {
       if (err) {
         res.clearCookie('accessToken');
         res.redirect('/login');
@@ -20,8 +21,6 @@ const isAuth = (req, res, next) => {
 
 const isNotAuth = (req, res, next) => {
   const { accessToken } = req.cookies;
-  console.log(accessToken);
-
   if (accessToken) {
     res.redirect('/');
   }
