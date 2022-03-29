@@ -149,6 +149,15 @@ signupSubmit.addEventListener('click', () => {
   signupCheckInputs();
 });
 
+
+// const isAuth = () => {
+//   const cookies = document.cookie;
+//   if (cookies) {
+//     if (cookies.split('=')[0] === 'accessToken') {
+//       return true;
+//     }
+//   }
+  
 const login = () => {
   const request = {
     method: 'POST',
@@ -158,7 +167,7 @@ const login = () => {
     }),
     headers: { 'Content-Type': 'application/json' },
   };
-  return fetch('/signup', request)
+  return fetch('/login', request)
     .then((result) => result.json())
     .then((res) => {
       if (res.status === 400) {
@@ -166,7 +175,7 @@ const login = () => {
       } else if (res.status === 500) {
         swal('Warning !', res.msg, 'warning');
       } else {
-        window.location.href = '/posts';
+        window.location.href = '/user';
       }
     });
 };
@@ -189,8 +198,11 @@ const signup = () => {
         swal('Warning !', res.msg, 'warning');
       } else if (res.status === 500) {
         swal('Warning !', res.msg, 'warning');
+      } else if (res.status === 422) {
+        swal('Warning !', res.msg, 'warning');
       } else {
-        window.location.href = '/posts';
+        window.location.href = '/user';
       }
     });
 };
+
