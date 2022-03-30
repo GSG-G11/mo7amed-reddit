@@ -8,12 +8,15 @@ const {
   deletePost,
   addPost,
   userController,
+  logOut,
 } = require('../controllers');
 const { isAuth, isNotAuth } = require('../middleware/auth');
 const checkAuth = require('../middleware/checkauth');
 
 router.post('/signup', isNotAuth, signup);
 router.post('/login', isNotAuth, login);
+router.post('/logout', isAuth, logOut);
+
 router.get('/posts', getPosts);
 router.delete('/posts/:id', isAuth, deletePost);
 router.post('/posts', isAuth, addPost);

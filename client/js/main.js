@@ -11,6 +11,7 @@ const addPostCancel = document.getElementById('add-post-cancel');
 const description = document.getElementById('add-description');
 const title = document.getElementById('add-title');
 const submitBtn = document.getElementById('submit-post');
+const imageLink = document.getElementById('link');
 showAddPost.addEventListener('click', () => {
   addPostContainer.style.display = 'block';
   addPostBackground.style.display = 'flex';
@@ -69,12 +70,14 @@ const addPOST = () => {
   return fetch('/posts', request)
     .then((result) => result.json())
     .then((res) => {
+      console.log(res)
       if (res.status === 400) {
         swal('Warning !', res.msg, 'warning');
       } else if (res.status === 500) {
         swal('Warning !', res.msg, 'warning');
       } else {
-        window.location.href = '/hello';
+        window.location.href = '/user';
+        createPost(res);
       }
     });
 };
@@ -142,6 +145,40 @@ const createPost = (array) => {
     post.appendChild(commentContainer);
 
     postContainer.appendChild(post);
-    postsHolder.appendChild(postContainer);
+
+    postsHolder.insertBefore(postContainer, postsHolder.children[0]);
   });
+};
+const nameUser = document.getElementById('user-name');
+fetch('/cookie')
+  .then((data) => data.json())
+  .then((data) => {
+    if (data.msg === 'You are logged in') {
+     nameUser.textContent = data.data.email.split('@')[0];
+    }
+    else {
+      window.location.href = '/';
+    }
+  })
+  .catch((err) => {
+    if (err.status === 400) {
+      swal('Warning !', err.msg, 'warning');
+    } else if (err.status === 500) {
+      swal('Warning !', err.msg, 'warning');
+    }
+  });
+const logout = document.getElementById('logout');
+logout.addEventListener('click', () => {
+  logOut();
+});
+  
+const logOut = () => {
+  const request = {
+    method: 'POST'
+  };
+  return fetch('/logout', request)
+    .then((result) => result.json())
+    .then((data) => {
+      console.log(data)
+    });
 };
