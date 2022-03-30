@@ -270,7 +270,8 @@ const createPost = (array) => {
   });
 };
 const btnsHolder = document.getElementById('btns-container');
-const logedusername = document.getElementById('user-name');
+const nameUser = document.getElementById('user-name');
+
 fetch('/cookie')
   .then((data) => data.json())
   .then((data) => {
@@ -278,11 +279,10 @@ fetch('/cookie')
       btnsHolder.style.display = 'flex';
       addPostHolder.style.display = 'none';
     } else if (data.msg === 'You are logged in') {
-      console.log(data.data.email.split('@')[0]);
-
+      window.location.href = '/user';
+     nameUser.textContent = data.data.email.split('@')[0];
       btnsHolder.style.display = 'none';
       addPostHolder.style.display = 'flex';
-      logedusername.textContent = data.data.email.split('@')[0];
     }
   })
   .catch((err) => {
