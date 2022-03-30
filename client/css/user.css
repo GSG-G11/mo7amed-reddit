@@ -354,7 +354,7 @@ textarea {
   filter: brightness(90%);
 }
 
-.add-post-info {
+.add-post-info{
   display: flex;
   position: absolute;
   right: 20px;
@@ -393,4 +393,13 @@ textarea {
   border-radius: 25px;
   cursor: pointer;
   padding: 11px 24px;
+}
+
+#user-holder{
+  display: flex;
+}
+#user-holder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

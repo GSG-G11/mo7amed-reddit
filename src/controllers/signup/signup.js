@@ -33,7 +33,7 @@ const signup = (req, res) => {
           res
             .cookie('accessToken', token, { httpOnly: true, secure: true })
             .status(201)
-            .json({ msg: 'you rigisted successfully' });
+            .json({ msg: 'you rigisted successfully', logedin: username });
         }
       });
     })

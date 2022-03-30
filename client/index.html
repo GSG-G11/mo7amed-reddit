@@ -20,7 +20,7 @@
   <!-- header -->
   <header>
     <div id="logo-img">
-      <a href="/home"><img src="./assets/download.png" alt="home icon" /></a>
+      <a href="/"><img src="./assets/download.png" alt="home icon" /></a>
     </div>
     <div id="title">
       <h2><span>m</span>ohamed <span>reddit</span></h2>
@@ -35,8 +35,7 @@
           <button id="add-post-button"> add post</button>
         </div>
         <div class="user-header">
-          <img src="./assets/user.jpg" alt="">
-          <h5>mo7amed ehab</h5>
+          <h5 id="user-name"></h5>
         </div>
       </div>
     </div>
@@ -83,33 +82,7 @@
     <h4>popular post</h4>
 
     <div class="container">
-      <div id="posts-container">
-        <div id="votes">
-          <i class="fa-solid fa-chevron-up"></i>
-          <h5>5</h5>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div id="post">
-
-          <div id="content">
-            <div class="user-info">
-              <img src="./assets/user.jpg" alt="">
-              <h5>mo7amed ehab</h5>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae animi, labore sequi sunt, maiores
-              tempore provident repudiandae eius iste error eos ad atque? Qui earum, culpa a Lorem ipsum dolor, sit amet
-              consectetur adipisicing elit. Nemo nam natus eum nostrum ex possimus recusandae eius temporibus
-              perferendis sed delectus, mollitia ullam ab reiciendis cumque eveniet nulla aliquam sapiente. Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Fugiat nam est consequatur cum, magni fuga deleniti vel,
-              reprehenderit quod laboriosam architecto veniam inventore illo dolore eum corrupti quae facere. Enim?</p>
-            <img src="./assets/barca.jpg" alt="">
-          </div>
-          <div id="comments">
-            <i class="fa-regular fa-comment"></i>
-            <span>9</span>
-            <span>comments</span>
-          </div>
-        </div>
+     
       </div>
 
   </section>
@@ -141,6 +114,7 @@
     </div>
   </div>
   </div>
+  
   <!-- signup form -->
   <div class="signup-form">
     <div class="signup-container">
@@ -165,7 +139,7 @@
         </div>
         <div class="form-control">
           <label for="signup-password">Password</label>
-          <input type="password" placeholder="Password" id="signup-password" />
+          <input type="password" placeholder="Password" id="signup-password" autocomplete="secret_key" />
           <i class="fas fa-check-circle"></i>
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>

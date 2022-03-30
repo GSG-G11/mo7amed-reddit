@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
 
@@ -79,9 +81,10 @@ const isPassword = (password) => {
   const passwordLength = password.split('').length;
   return passwordLength > 8;
 };
-const isEmail = (email) => (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-  email,
-));
+const isEmail = (email) =>
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email,
+  );
 
 function loginCheckInputs() {
   // trim to remove the whitespaces
@@ -149,15 +152,6 @@ signupSubmit.addEventListener('click', () => {
   signupCheckInputs();
 });
 
-
-// const isAuth = () => {
-//   const cookies = document.cookie;
-//   if (cookies) {
-//     if (cookies.split('=')[0] === 'accessToken') {
-//       return true;
-//     }
-//   }
-  
 const login = () => {
   const request = {
     method: 'POST',
@@ -179,7 +173,6 @@ const login = () => {
       }
     });
 };
-//  create xhr post request sign up
 const signup = () => {
   const request = {
     method: 'POST',
@@ -194,10 +187,13 @@ const signup = () => {
   return fetch('/signup', request)
     .then((result) => result.json())
     .then((res) => {
+      console.log(res);
       if (res.status === 400) {
         swal('Warning !', res.msg, 'warning');
       } else if (res.status === 500) {
         swal('Warning !', res.msg, 'warning');
+      } else if (res.status === 201) {
+        console.log(res);
       } else if (res.status === 422) {
         swal('Warning !', res.msg, 'warning');
       } else {
@@ -206,3 +202,93 @@ const signup = () => {
     });
 };
 
+fetch('/posts')
+  .then((data) => data.json())
+  .then((data) => createPost(data))
+  .catch((err) => {
+    if (err.status === 400) {
+      swal('Warning !', err.msg, 'warning');
+    } else if (err.status === 500) {
+      swal('Warning !', err.msg, 'warning');
+    } else {
+      swal('Warning !', err.msg, 'warning');
+    }
+  });
+
+const postsHolder = document.getElementsByClassName('container')[0];
+
+const createPost = (array) => {
+  array.forEach((element) => {
+    const postContainer = document.createElement('div');
+    const votesContainer = document.createElement('div');
+    const upvote = document.createElement('i');
+    const downvote = document.createElement('i');
+    const votesH5 = document.createElement('h5');
+    postContainer.id = 'posts-container';
+    votesContainer.id = 'votes';
+    upvote.className = 'fa-solid fa-chevron-up';
+    downvote.className = 'fa-solid fa-chevron-down';
+    votesH5.textContent = element.votes_number;
+    votesContainer.appendChild(upvote);
+    votesContainer.appendChild(votesH5);
+    votesContainer.appendChild(downvote);
+    const post = document.createElement('div');
+    const content = document.createElement('div');
+    post.id = 'post';
+    const userInfo = document.createElement('div');
+    userInfo.className = 'user-info';
+    const userName = document.createElement('h5');
+    const userPost = document.createElement('p');
+    const image = document.createElement('img');
+    userName.textContent = element.username;
+    userPost.textContent = element.description;
+    image.src = element.image;
+    userInfo.appendChild(userName);
+    content.appendChild(userInfo);
+    content.appendChild(userPost);
+    content.appendChild(image);
+
+    const commentContainer = document.createElement('div');
+    commentContainer.id = 'comments';
+
+    const commentIcon = document.createElement('i');
+    const commentNumber = document.createElement('span');
+    const commentStr = document.createElement('span');
+
+    commentIcon.className = 'fa-regular fa-comment';
+    commentNumber.textContent = element.comments;
+    commentStr.textContent = 'comments';
+    commentContainer.appendChild(commentIcon);
+    commentContainer.appendChild(commentStr);
+    commentContainer.appendChild(commentNumber);
+    postContainer.appendChild(votesContainer);
+    post.appendChild(content);
+    post.appendChild(commentContainer);
+
+    postContainer.appendChild(post);
+    postsHolder.appendChild(postContainer);
+  });
+};
+const btnsHolder = document.getElementById('btns-container');
+const logedusername = document.getElementById('user-name');
+fetch('/cookie')
+  .then((data) => data.json())
+  .then((data) => {
+    if (data.msg === 'You are not logged in') {
+      btnsHolder.style.display = 'flex';
+      addPostHolder.style.display = 'none';
+    } else if (data.msg === 'You are logged in') {
+      console.log(data.data.email.split('@')[0]);
+
+      btnsHolder.style.display = 'none';
+      addPostHolder.style.display = 'flex';
+      logedusername.textContent = data.data.email.split('@')[0];
+    }
+  })
+  .catch((err) => {
+    if (err.status === 400) {
+      swal('Warning !', err.msg, 'warning');
+    } else if (err.status === 500) {
+      swal('Warning !', err.msg, 'warning');
+    }
+  });
