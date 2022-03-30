@@ -7,13 +7,13 @@ const isAuth = (req, res, next) => {
     verify(accessToken, process.env.SECRET_KEY, (err, user) => {
       if (err) {
         res.clearCookie('accessToken');
-        res.redirect('/login');
+        res.redirect('/');
       }
       req.user = user;
       next();
     });
   } else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 };
 

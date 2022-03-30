@@ -224,7 +224,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
 
 .add-post-container{
@@ -356,6 +356,8 @@ textarea {
 
 .add-post-info{
   display: flex;
+  position: absolute;
+  right: 20px;
 }
 #add-post-btn button {
   margin-right: 60px;

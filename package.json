@@ -28,7 +28,8 @@
     "express": "^4.17.3",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "eslint": "^8.11.0",

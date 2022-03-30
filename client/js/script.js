@@ -28,7 +28,8 @@ const showSignup = document.getElementById('signup-btn');
 const showAddPost = document.getElementById('add-post-button');
 
 // add post selectors
-const addPostContainer = document.getElementsByClassName('add-post-container')[0];
+const addPostContainer =
+  document.getElementsByClassName('add-post-container')[0];
 const addPostBackground = document.getElementsByClassName('add-post-form')[0];
 const addPostCancel = document.getElementById('add-post-cancel');
 
@@ -186,10 +187,13 @@ const signup = () => {
   return fetch('/signup', request)
     .then((result) => result.json())
     .then((res) => {
+      console.log(res);
       if (res.status === 400) {
         swal('Warning !', res.msg, 'warning');
       } else if (res.status === 500) {
         swal('Warning !', res.msg, 'warning');
+      } else if (res.status === 201) {
+        console.log(res);
       } else if (res.status === 422) {
         swal('Warning !', res.msg, 'warning');
       } else {
@@ -212,6 +216,7 @@ fetch('/posts')
   });
 
 const postsHolder = document.getElementsByClassName('container')[0];
+
 const createPost = (array) => {
   array.forEach((element) => {
     const postContainer = document.createElement('div');
@@ -264,3 +269,26 @@ const createPost = (array) => {
     postsHolder.appendChild(postContainer);
   });
 };
+const btnsHolder = document.getElementById('btns-container');
+const logedusername = document.getElementById('user-name');
+fetch('/cookie')
+  .then((data) => data.json())
+  .then((data) => {
+    if (data.msg === 'You are not logged in') {
+      btnsHolder.style.display = 'flex';
+      addPostHolder.style.display = 'none';
+    } else if (data.msg === 'You are logged in') {
+      console.log(data.data.email.split('@')[0]);
+
+      btnsHolder.style.display = 'none';
+      addPostHolder.style.display = 'flex';
+      logedusername.textContent = data.data.email.split('@')[0];
+    }
+  })
+  .catch((err) => {
+    if (err.status === 400) {
+      swal('Warning !', err.msg, 'warning');
+    } else if (err.status === 500) {
+      swal('Warning !', err.msg, 'warning');
+    }
+  });
